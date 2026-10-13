@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>詹贻珩 · 个人简历</title>
+<style>
+  /* ========== 设计变量 ========== */
+  :root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --primary-light: #dbeafe;
+    --ink: #1f2937;
+    --ink-soft: #4b5563;
+    --line: #e5e7eb;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --accent: #0ea5e9;
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: linear-gradient(160deg, #eef2ff 0%, var(--bg) 40%, #e0f2fe 100%);
+    color: var(--ink);
+    line-height: 1.7;
+    padding: 32px 16px;
+  }
+
+  /* ========== 布局 ========== */
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    animation: pageIn .6s ease both;
+  }
+
+  @keyframes pageIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ========== 头部 ========== */
+  header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: #fff;
+    padding: 48px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: "";
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,.12);
+    border-radius: 50%;
+  }
+
+  header::after {
+    content: "";
+    position: absolute;
+    right: 60px; bottom: -90px;
+    width: 180px; height: 180px;
+    background: rgba(255,255,255,.08);
+    border-radius: 50%;
+  }
+
+  .avatar {
+    width: 92px; height: 92px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.22);
+    border: 3px solid rgba(255,255,255,.65);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 38px; font-weight: 700; letter-spacing: 2px;
+    margin-bottom: 18px;
+  }
+
+  header h1 { font-size: 34px; letter-spacing: 4px; }
+  header .title-tag {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 16px;
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 999px;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .contact {
+    display: flex; flex-wrap: wrap; gap: 14px 28px;
+    margin-top: 22px;
+    font-size: 14px;
+    position: relative; z-index: 1;
+  }
+
+  .contact span { display: inline-flex; align-items: center; gap: 7px; }
+  .contact b { font-weight: 600; }
+
+  /* ========== 主体 ========== */
+  main {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 0;
+  }
+
+  /* 侧栏 */
+  aside {
+    background: var(--primary-light);
+    padding: 36px 28px;
+  }
+
+  .side-section + .side-section { margin-top: 30px; }
+
+  .side-section h3 {
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: var(--primary-dark);
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid rgba(37, 99, 235, .25);
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .side-section h3::before {
+    content: "";
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+
+  .info-item { font-size: 14px; margin-bottom: 10px; color: var(--ink-soft); }
+  .info-item b { color: var(--ink); font-weight: 600; }
+
+  /* 技能条 */
+  .skill { margin-bottom: 14px; }
+  .skill .name { font-size: 13px; color: var(--ink-soft); margin-bottom: 5px; display: flex; justify-content: space-between; }
+  .bar {
+    height: 8px;
+    background: rgba(37, 99, 235, .12);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .bar i {
+    display: block; height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 999px;
+    animation: grow 1.2s ease forwards;
+  }
+  @keyframes grow { to { width: var(--w); } }
+
+  .lang-list { font-size: 14px; color: var(--ink-soft); }
+  .lang-list li { list-style: none; margin-bottom: 8px; padding-left: 18px; position: relative; }
+  .lang-list li::before {
+    content: ""; position: absolute; left: 0; top: 9px;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* 主栏 */
+  .content { padding: 36px 40px 44px; }
+
+  .content-section + .content-section { margin-top: 32px; }
+
+  .content-section h2 {
+    font-size: 19px;
+    color: var(--primary-dark);
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .content-section h2::after {
+    content: "";
+    flex: 1; height: 1px;
+    background: var(--line);
+  }
+
+  .entry { margin-bottom: 20px; }
+  .entry:last-child { margin-bottom: 0; }
+
+  .entry-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 4px 12px;
+  }
+  .entry-head h4 { font-size: 16px; color: var(--ink); }
+  .entry-head .time {
+    font-size: 12px; color: var(--primary);
+    background: var(--primary-light);
+    padding: 2px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .entry .sub { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+  .entry p, .entry ul { font-size: 14px; color: var(--ink-soft); margin-top: 8px; }
+  .entry ul { padding-left: 18px; }
+  .entry li { margin-bottom: 5px; }
+  .entry li::marker { color: var(--accent); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .tag {
+    font-size: 12px;
+    color: var(--primary-dark);
+    background: var(--primary-light);
+    border: 1px solid rgba(37,99,235,.18);
+    padding: 3px 12px;
+    border-radius: 999px;
+    transition: all .25s ease;
+  }
+  .tag:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+
+  /* 荣誉列表 */
+  .award { font-size: 14px; color: var(--ink-soft); margin-bottom: 8px; padding-left: 20px; position: relative; }
+  .award::before {
+    content: "★"; position: absolute; left: 0;
+    color: #f59e0b; font-size: 12px; top: 2px;
+  }
+
+  /* ========== 响应式 ========== */
+  @media (max-width: 720px) {
+    body { padding: 0; }
+    .page { border-radius: 0; }
+    header { padding: 36px 24px; }
+    main { grid-template-columns: 1fr; }
+    aside { padding: 28px 24px; }
+    .content { padding: 28px 24px 36px; }
+  }
+
+  /* ========== 打印 ========== */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border-radius: 0; }
+    .bar i { width: var(--w); animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- 头部信息 -->
+  <header>
+    <div class="avatar">詹</div>
+    <h1>詹贻珩</h1>
+    <div class="title-tag">物流管理专业 · 应届毕业生</div>
+    <div class="contact">
+      <span>📞 电话：<b>188-0609-7720</b></span>
+      <span>✉️ 邮箱：<b>zyh07112@qq.com</b></span>
+      <span>📍 地址：<b>福建省 三明市</b></span>
+    </div>
+  </header>
+
+  <main>
+    <!-- 左侧栏：基本信息 / 技能 -->
+    <aside>
+      <div class="side-section">
+        <h3>基本信息</h3>
+        <div class="info-item"><b>姓名：</b>詹贻珩</div>
+        <div class="info-item"><b>年龄：</b>20 岁</div>
+        <div class="info-item"><b>学历：</b>本科</div>
+        <div class="info-item"><b>求职意向：</b>没想好ovo</div>
+      </div>
+
+      <div class="side-section">
+        <h3>专业技能</h3>
+        <div class="skill">
+          <div class="name"><span>好奇心</span><span>90%</span></div>
+          <div class="bar"><i style="--w:90%"></i></div>
+        </div>
+        <div class="skill">
+          <div class="name"><span>探索欲</span><span>75%</span></div>
+          <div class="bar"><i style="--w:75%"></i></div>
+        </div>
+        <div class="skill">
+          <div class="name"><span>爱心</span><span>85%</span></div>
+          <div class="bar"><i style="--w:85%"></i></div>
+        </div>
+        <div class="skill">
+          <div class="name"><span>瓦洛兰特</span><span>70%</span></div>
+          <div class="bar"><i style="--w:70%"></i></div>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <h3>证书资质</h3>
+        <ul class="lang-list">
+          <li>中华人民共和国身份证</li>
+          <li>港澳通行证</li>
+          <li>学生证</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- 右侧主栏 -->
+    <div class="content">
+
+      <section class="content-section">
+        <h2>个人简介</h2>
+        <p>不会吹牛</p>
+      </section>
+
+      <section class="content-section">
+        <h2>教育背景</h2>
+        <div class="entry">
+          <div class="entry-head">
+            <h4>红河学院 · 物流管理专业</h4>
+            <span class="time">2025.09 — 2029.06</span>
+          </div>
+          <div class="sub">本科 · 管理学学士</div>
+          <ul>
+            <li>主修课程：数据分析、管理学</li>
+            <li>GPA 不知道</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>项目与实践经历</h2>
+        <div class="entry">
+          <div class="entry-head">
+            <h4>无</h4>
+            <span class="time">2007年后</span>
+          </div>
+          <ul>
+            <li>无</li>
+          </ul>
+        </div>
+        <div class="entry">
+      </section>
+
+      <section class="content-section">
+        <h2>荣誉与证书</h2>
+        <div class="award">无</div>
+      </section>
+
+      <section class="content-section">
+        <h2>自我评价</h2>
+        <p>注重细节、善于协作，能快速学习新工具和新知识；目标导向，愿意从基础做起，与团队共同成长。</p>
+        <div class="tags">
+          <span class="tag">责任心强</span>
+          <span class="tag">团队协作</span>
+          <span class="tag">快速学习</span>
+          <span class="tag">细致耐心</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
